@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добро пожаловать в магазин &ndash; dokShop</title>
+</head>
+<body>
+
+    <form method="get" th:action="@{/catalogue/products/list}">
+        <label>Фильтр: <input type="text" name="filter" th:value="${filter}"></label><br>
+        <button type="submit">Поиск</button>
+    </form>
+
+    <a th:href="@{/catalogue/products/createProduct}">Создать товар</a>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    #
+                </th>
+                <th>
+                    Название
+                </th>
+                <th>
+                    Цена
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.id}"></td>
+                <td> <a th:href="@{/catalogue/products/{productId} (productId = ${product.id})}"
+                        th:text="${product.name}">
+                    </a>
+                </td>
+                <td th:textt="${product.price}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: manager-app
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+  datasource:
+    url: jdbc:postgresql://localhost:5434/manager_database
+    username: manager
+    password: manager_password
+dok-shop:
+  services:
+    catalogue:
+      username: dokshop_catalogue_user
+      password: password
+      uri: http://localhost:8080
+

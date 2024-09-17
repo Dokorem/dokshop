@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование товара</title>
+</head>
+<body>
+
+<div th:if="${errors}">
+    <h1 th:each="error : ${errors}" th:text="${error}"></h1>
+</div>
+
+<a th:href="@{/catalogue/products/{productId}(productId = ${product.id})}">&larr; Назад к товару</a>
+<h1>Редактирование товар</h1>
+<form th:method="patch" th:action="@{/catalogue/products/{productId}/edit (productId = ${product.id})}">
+    <label>
+        Название:<br>
+        <input type="text" name="name" th:value="${payload != null ? payload.name : product.name}" required>
+    </label><br>
+    <label>
+        Описание:<br>
+        <textarea name="description" th:text="${payload != null ? payload.description : product.description}" required></textarea>
+    </label><br>
+    <label>
+        Цена:<br>
+        <input type="text" name="price" th:value="${payload != null ? payload.price : product.price}" required>
+    </label><br>
+
+    <button type="submit">Изменить</button>
+</form>
+
+</body>
+</html>
